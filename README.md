@@ -1,9 +1,9 @@
-# web3swiftAlpha
-**web3swiftAlpha** is an iOS toolbelt for interaction with the Ethereum network.
+# EtherWallet
+**EtherWallet** is an iOS toolbelt for interaction with the Ethereum network.
 
 ![language](https://img.shields.io/badge/Language-Swift-green)
 [![Support](https://img.shields.io/badge/support-iOS%209%2B%20-FB7DEC.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
-[![CocoaPods](https://img.shields.io/badge/support-Cocoapods-green)](https://www.swift.org/getting-started/#using-the-package-manager)
+[![CocoaPods](https://img.shields.io/badge/support-SwiftPackageManagr-green)](https://www.swift.org/getting-started/#using-the-package-manager)
 
 ![](Resource/Demo01.png)
 
@@ -11,16 +11,19 @@ The generation of wave field private keys, mnemonics, and Keystores is recommend
 
 For more specific usage, please refer to the [demo](https://github.com/smithSophiav/Web3Swift/tree/main/Demo)
 
-###  CocoaPods
+### Swift Package Manager
+The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
+Once you have your Swift package set up, adding SDBridgeSwift as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 ```ruby
-pod 'web3swiftAlpha', '~> 1.0.5'
+dependencies: [
+    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.0.2"))
+]
 ```
-
 ### Example usage
 
 ```swift
-import Web3_v1
+import EtherWallet
 ```
 
 ##### Setup Web3_v1
@@ -68,8 +71,8 @@ print("txid = \(txid)")
 }
 ```
 
-For more detailed usage methods, it is recommended to refer to [demo](https://github.com/smithSophiav/Web3Swift/tree/main/Demo)
+For more detailed usage methods, it is recommended to refer to [demo](https://github.com/smithSophiav/EtherWallet/tree/main/Demo)
 
 ## License
 
-web3swiftAlpha is released under the MIT license. [See LICENSE](https://github.com/smithSophiav/Web3Swift/blob/main/LICENSE) for details.
+EtherWallet is released under the MIT license. [See LICENSE](https://github.com/smithSophiav/EtherWallet/blob/main/LICENSE) for details.
