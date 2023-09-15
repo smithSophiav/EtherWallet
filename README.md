@@ -9,7 +9,7 @@
 
 The generation of wave field private keys, mnemonics, and Keystores is recommended [TrustWalletCore](https://github.com/trustwallet/wallet-core)
 
-For more specific usage, please refer to the [demo](https://github.com/smithSophiav/Web3Swift/tree/main/Demo)
+For more specific usage, please refer to the [demo](https://github.com/smithSophiav/EtherWallet/tree/main/Demo)
 
 ### Swift Package Manager
 The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
