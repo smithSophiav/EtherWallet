@@ -80,7 +80,7 @@ public class Web3_v1: NSObject {
     }
 
     func loadBundleResource(bundleName: String, sourceName: String) -> String {
-        var bundleResourcePath = Bundle.module.path(forResource: bundleName, ofType: "bundle")
+        let bundleResourcePath = Bundle.module.path(forResource: bundleName, ofType: "bundle")
         return bundleResourcePath! + sourceName
     }
 
