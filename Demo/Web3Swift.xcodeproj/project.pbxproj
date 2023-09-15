@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		177E06494D5B48A2AAF2FEF1 /* Pods_Web3Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EC2C6CE6AA5B2AD4F414C1 /* Pods_Web3Swift.framework */; };
+		EF07302F2A99D090005AF8AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF07302E2A99D090005AF8AD /* AppDelegate.swift */; };
+		EF0730312A99D090005AF8AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730302A99D090005AF8AD /* SceneDelegate.swift */; };
+		EF0730332A99D090005AF8AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730322A99D090005AF8AD /* ViewController.swift */; };
+		EF0730362A99D090005AF8AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0730342A99D090005AF8AD /* Main.storyboard */; };
+		EF0730382A99D092005AF8AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF0730372A99D092005AF8AD /* Assets.xcassets */; };
+		EF07303B2A99D092005AF8AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF0730392A99D092005AF8AD /* LaunchScreen.storyboard */; };
+		EF0730432A99D3F4005AF8AD /* GetBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730422A99D3F4005AF8AD /* GetBalanceViewController.swift */; };
+		EF0730452A99D417005AF8AD /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730442A99D417005AF8AD /* TransferViewController.swift */; };
+		EF0730492A99E445005AF8AD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730482A99E445005AF8AD /* Constant.swift */; };
+		EF3456E12AB453570048AD82 /* EtherWallet in Frameworks */ = {isa = PBXBuildFile; productRef = EF3456E02AB453570048AD82 /* EtherWallet */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		733FE4EA597FB159A3DCA3C8 /* Pods-Web3Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Swift.release.xcconfig"; path = "Target Support Files/Pods-Web3Swift/Pods-Web3Swift.release.xcconfig"; sourceTree = "<group>"; };
+		9829A6CCE247F2244235F47C /* Pods-Web3Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Swift.debug.xcconfig"; path = "Target Support Files/Pods-Web3Swift/Pods-Web3Swift.debug.xcconfig"; sourceTree = "<group>"; };
+		D1EC2C6CE6AA5B2AD4F414C1 /* Pods_Web3Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Web3Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF07302B2A99D090005AF8AD /* Web3Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Web3Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF07302E2A99D090005AF8AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EF0730302A99D090005AF8AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EF0730322A99D090005AF8AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF0730352A99D090005AF8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EF0730372A99D092005AF8AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF07303A2A99D092005AF8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EF07303C2A99D092005AF8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF0730422A99D3F4005AF8AD /* GetBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBalanceViewController.swift; sourceTree = "<group>"; };
+		EF0730442A99D417005AF8AD /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		EF0730482A99E445005AF8AD /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF0730282A99D090005AF8AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF3456E12AB453570048AD82 /* EtherWallet in Frameworks */,
+				177E06494D5B48A2AAF2FEF1 /* Pods_Web3Swift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A3B1BAC9302168880AE6B1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9829A6CCE247F2244235F47C /* Pods-Web3Swift.debug.xcconfig */,
+				733FE4EA597FB159A3DCA3C8 /* Pods-Web3Swift.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EF0730222A99D090005AF8AD = {
+			isa = PBXGroup;
+			children = (
+				EF07302D2A99D090005AF8AD /* Web3Swift */,
+				EF07302C2A99D090005AF8AD /* Products */,
+				4A3B1BAC9302168880AE6B1C /* Pods */,
+				FEE53FC8089441DBBBA6A2A5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EF07302C2A99D090005AF8AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF07302B2A99D090005AF8AD /* Web3Swift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF07302D2A99D090005AF8AD /* Web3Swift */ = {
+			isa = PBXGroup;
+			children = (
+				EF07302E2A99D090005AF8AD /* AppDelegate.swift */,
+				EF0730302A99D090005AF8AD /* SceneDelegate.swift */,
+				EF0730322A99D090005AF8AD /* ViewController.swift */,
+				EF0730422A99D3F4005AF8AD /* GetBalanceViewController.swift */,
+				EF0730442A99D417005AF8AD /* TransferViewController.swift */,
+				EF0730482A99E445005AF8AD /* Constant.swift */,
+				EF0730342A99D090005AF8AD /* Main.storyboard */,
+				EF0730372A99D092005AF8AD /* Assets.xcassets */,
+				EF0730392A99D092005AF8AD /* LaunchScreen.storyboard */,
+				EF07303C2A99D092005AF8AD /* Info.plist */,
+			);
+			path = Web3Swift;
+			sourceTree = "<group>";
+		};
+		FEE53FC8089441DBBBA6A2A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1EC2C6CE6AA5B2AD4F414C1 /* Pods_Web3Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF07302A2A99D090005AF8AD /* Web3Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF07303F2A99D092005AF8AD /* Build configuration list for PBXNativeTarget "Web3Swift" */;
+			buildPhases = (
+				F45EC18F416E741D5871A383 /* [CP] Check Pods Manifest.lock */,
+				EF0730272A99D090005AF8AD /* Sources */,
+				EF0730282A99D090005AF8AD /* Frameworks */,
+				EF0730292A99D090005AF8AD /* Resources */,
+				5EADD7EF065ACBAE43AC8C10 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Web3Swift;
+			packageProductDependencies = (
+				EF3456E02AB453570048AD82 /* EtherWallet */,
+			);
+			productName = Web3Swift;
+			productReference = EF07302B2A99D090005AF8AD /* Web3Swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF0730232A99D090005AF8AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					EF07302A2A99D090005AF8AD = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = EF0730262A99D090005AF8AD /* Build configuration list for PBXProject "Web3Swift" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF0730222A99D090005AF8AD;
+			packageReferences = (
+				EF3456DF2AB453570048AD82 /* XCRemoteSwiftPackageReference "EtherWallet" */,
+			);
+			productRefGroup = EF07302C2A99D090005AF8AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF07302A2A99D090005AF8AD /* Web3Swift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF0730292A99D090005AF8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF07303B2A99D092005AF8AD /* LaunchScreen.storyboard in Resources */,
+				EF0730382A99D092005AF8AD /* Assets.xcassets in Resources */,
+				EF0730362A99D090005AF8AD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EADD7EF065ACBAE43AC8C10 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Swift/Pods-Web3Swift-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Swift/Pods-Web3Swift-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Swift/Pods-Web3Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F45EC18F416E741D5871A383 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Web3Swift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF0730272A99D090005AF8AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF0730492A99E445005AF8AD /* Constant.swift in Sources */,
+				EF0730332A99D090005AF8AD /* ViewController.swift in Sources */,
+				EF0730452A99D417005AF8AD /* TransferViewController.swift in Sources */,
+				EF07302F2A99D090005AF8AD /* AppDelegate.swift in Sources */,
+				EF0730432A99D3F4005AF8AD /* GetBalanceViewController.swift in Sources */,
+				EF0730312A99D090005AF8AD /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EF0730342A99D090005AF8AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF0730352A99D090005AF8AD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EF0730392A99D092005AF8AD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF07303A2A99D092005AF8AD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EF07303D2A99D092005AF8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF07303E2A99D092005AF8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF0730402A99D092005AF8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9829A6CCE247F2244235F47C /* Pods-Web3Swift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Web3Swift/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.web3.swift.Web3Swift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF0730412A99D092005AF8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 733FE4EA597FB159A3DCA3C8 /* Pods-Web3Swift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Web3Swift/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.web3.swift.Web3Swift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF0730262A99D090005AF8AD /* Build configuration list for PBXProject "Web3Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF07303D2A99D092005AF8AD /* Debug */,
+				EF07303E2A99D092005AF8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF07303F2A99D092005AF8AD /* Build configuration list for PBXNativeTarget "Web3Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF0730402A99D092005AF8AD /* Debug */,
+				EF0730412A99D092005AF8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EF3456DF2AB453570048AD82 /* XCRemoteSwiftPackageReference "EtherWallet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smithSophiav/EtherWallet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EF3456E02AB453570048AD82 /* EtherWallet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF3456DF2AB453570048AD82 /* XCRemoteSwiftPackageReference "EtherWallet" */;
+			productName = EtherWallet;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EF0730232A99D090005AF8AD /* Project object */;
+}

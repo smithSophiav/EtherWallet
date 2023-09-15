@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "etherwallet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/smithSophiav/EtherWallet",
+      "state" : {
+        "revision" : "e3339aba27917532d79ebe3432f6c1a8140d5f37",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}
