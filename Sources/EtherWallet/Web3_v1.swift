@@ -17,7 +17,7 @@
 //  THE SOFTWARE.
 
 import WebKit
-/// Please login https://app.infura.io apply for your own API KEYs 
+/// Please login https://app.infura.io apply for your own API KEYs
 public let MainNet: String = "https://mainnet.infura.io/v3/fe816c09404d406f8f47af0b78413806"
 
 extension Web3_v1: WKNavigationDelegate {
@@ -81,7 +81,85 @@ public class Web3_v1: NSObject {
 
     func loadBundleResource(bundleName: String, sourceName: String) -> String {
         let bundleResourcePath = Bundle.module.path(forResource: bundleName, ofType: "bundle")
+//        var bundleResourcePath = Bundle.main.path(forResource: "Frameworks/\(bundleName).framework/\(bundleName)", ofType: "bundle")
+//        if bundleResourcePath == nil {
+//            bundleResourcePath = Bundle.main.path(forResource: bundleName, ofType: "bundle") ?? ""
+//        }
+
         return bundleResourcePath! + sourceName
+    }
+
+    // MARK: generateAccount
+
+    public func generateAccount(password: String, onCompleted: ((Bool, String, String, String, String) -> Void)? = nil) {
+        let params: [String: String] = ["password": password]
+        self.bridge.call(handlerName: "generateAccount", data: params) { response in
+            if self.showLog { print("response = \(String(describing: response))") }
+            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
+                onCompleted?(false, "error", "error", "error", "error")
+                return
+            }
+            if let address = temp["address"] as? String,
+               let privateKey = temp["privateKey"] as? String,
+               let keystore = temp["Keystore"] as? String,
+               let mnemonic = temp["mnemonic"] as? String
+            {
+                onCompleted?(state, address, mnemonic, privateKey, keystore)
+            }
+        }
+    }
+
+    // MARK: importAccount -- (password,Keystore)
+
+    public func importAccount(decryptPassword: String, Keystore: String, onCompleted: ((Bool, String, String) -> Void)? = nil) {
+        let params: [String: String] = ["decryptPassword": decryptPassword, "Keystore": Keystore]
+        self.bridge.call(handlerName: "importAccountFromKeystore", data: params) { response in
+            if self.showLog { print("response = \(String(describing: response))") }
+            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
+                onCompleted?(false, "error", "error")
+                return
+            }
+            if let address = temp["address"] as? String,
+               let privateKey = temp["privateKey"] as? String
+            {
+                onCompleted?(state, address, privateKey)
+            }
+        }
+    }
+
+    // MARK: importAccount -- (privateKey)
+
+    public func importAccount(privateKey: String, encrypedPassword: String, onCompleted: ((Bool, String, String) -> Void)? = nil) {
+        let params: [String: String] = ["privateKey": privateKey, "encrypedPassword": encrypedPassword]
+        self.bridge.call(handlerName: "importAccountFromPrivateKey", data: params) { response in
+            if self.showLog { print("response = \(String(describing: response))") }
+            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
+                onCompleted?(false, "error", "error")
+                return
+            }
+            if let address = temp["address"] as? String, let keystore = temp["Keystore"] as? String {
+                onCompleted?(state, address, keystore)
+            }
+        }
+    }
+
+    // MARK: importAccount -- (mnemonic) Only English mnemonics are supported
+
+    public func importAccount(mnemonic: String, encrypedPassword: String, onCompleted: ((Bool, String, String, String) -> Void)? = nil) {
+        let params: [String: String] = ["mnemonic": mnemonic, "encrypedPassword": encrypedPassword]
+        self.bridge.call(handlerName: "importAccountFromMnemonic", data: params) { response in
+            if self.showLog { print("response = \(String(describing: response))") }
+            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
+                onCompleted?(false, "error", "error", "error")
+                return
+            }
+            if let address = temp["address"] as? String,
+               let keystore = temp["Keystore"] as? String,
+               let privateKey = temp["privateKey"] as? String
+            {
+                onCompleted?(state, address, privateKey, keystore)
+            }
+        }
     }
 
     // MARK: getETHBalance
@@ -157,15 +235,15 @@ public class Web3_v1: NSObject {
                                             senderAddress: String,
                                             amount: String,
                                             decimal: Double = 6,
-                                            contractAddress:String,
+                                            contractAddress: String,
                                             onCompleted: ((Bool, String) -> Void)? = nil)
     {
         let params: [String: Any] = ["providerUrl": providerUrl,
-                                        "recipientAddress": recipientAddress,
-                                        "senderAddress": senderAddress,
-                                        "amount": amount,
-                                        "contractAddress":contractAddress,
-                                        "decimal":decimal]
+                                     "recipientAddress": recipientAddress,
+                                     "senderAddress": senderAddress,
+                                     "amount": amount,
+                                     "contractAddress": contractAddress,
+                                     "decimal": decimal]
         self.bridge.call(handlerName: "estimateERC20TransactionFee", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
             guard let temp = response as? [String: Any], let state = temp["state"] as? Bool, let estimateTransactionFee = temp["estimateTransactionFee"] as? String else {

@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Web3Swift
 //
-//  Created by Charles on 2023/8/26.
+//  Created by smithSophiav on 2023/8/26.
 //
 
 import SnapKit
@@ -11,10 +11,15 @@ enum ChainType: String, CaseIterable {
     case main
 }
 enum OperationType: String, CaseIterable {
+    case generateAccount
+    case importAccountFromKeystore
+    case importAccountFromPrivateKey
+    case importAccountFromMnemonic
+    case getETHBalance
+    case getERC20TokenBalance
     case ethTransfer
     case erc20Transfer
-    case getERC20TokenBalance
-    case getETHBalance
+    
 }
 
 class ViewController: UIViewController {
@@ -50,6 +55,14 @@ extension ViewController: UITableViewDelegate {
         let chainType = chainTypes[indexPath.section]
         let operationType = operationTypes[indexPath.row]
         switch operationType {
+        case .generateAccount:
+            navigationController?.pushViewController(GenerateAccountViewController(), animated: true)
+        case .importAccountFromKeystore:
+            navigationController?.pushViewController(ImportAccountFromKeystoreViewController(), animated: true)
+        case .importAccountFromPrivateKey:
+            navigationController?.pushViewController(ImportAccountFromPrivateKeyViewController(), animated: true)
+        case .importAccountFromMnemonic:
+            navigationController?.pushViewController(ImportAccountFromMnemonicViewController(), animated: true)
         case .ethTransfer,.erc20Transfer:
             let transferType = transferTypes[indexPath.row]
             let vc = TransferViewController(chainType, transferType)

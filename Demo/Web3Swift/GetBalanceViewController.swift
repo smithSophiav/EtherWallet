@@ -2,10 +2,11 @@
 //  GetBalanceViewController.swift
 //  Web3Swift
 //
-//  Created by Charles on 2023/8/26.
+//  Created by smithSophiav on 2023/8/26.
 //
 
 import UIKit
+import SnapKit
 import EtherWallet
 enum GetBalanceType: String, CaseIterable {
     case getETHBalance
@@ -32,6 +33,7 @@ class GetBalanceViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.text = "wait for get balance…"
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 
@@ -41,7 +43,7 @@ class GetBalanceViewController: UIViewController {
         addressField.placeholder = "please input address"
         addressField.adjustsFontSizeToFitWidth = true
         addressField.minimumFontSize = 0.5
-        addressField.text = "0x2bD47B6fbCb229dDc69534Ac564D93C264F70453"
+        addressField.text = "0x28c6c06298d514db089934071355e5743bf21d60"
         return addressField
     }()
 
