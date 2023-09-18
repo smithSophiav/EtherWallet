@@ -17,7 +17,7 @@ The Swift Package Manager is a tool for automating the distribution of Swift cod
 Once you have your Swift package set up, adding SDBridgeSwift as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 ```ruby
 dependencies: [
-    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.0.2"))
+    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.0.3"))
 ]
 ```
 ### Example usage
@@ -36,6 +36,68 @@ if web3.isWeb3LoadFinished {
         if web3LoadFinished {}
     }
 }
+```
+
+##### generate Account
+```swift
+web3.generateAccount(password: password) { [weak self] state, address,mnemonic,privateKey, keystore in
+    guard let self = self else { return }
+    self.generateAccountBtn.isEnabled = true
+    if state {
+        let text =
+        "address: " + address + "\n\n" +
+        "mnemonic: " + mnemonic + "\n\n" +
+        "privateKey: " + privateKey + "\n\n" +
+        "keystore: " + keystore
+        generateAccountTextView.text = text
+    } else {
+        
+    }
+}
+```
+
+##### Import Account From Mnemonic 
+```swift
+web3.importAccount(mnemonic: mnemonic, encrypedPassword: encrypedPassword){ [weak self] state,address,privateKey,keystore in
+    guard let self = self else { return }
+    self.importAccountBtn.isEnabled = true
+    if state {
+        let text =
+            "address: " + address + "\n\n" +
+            "privateKey: " + privateKey + "\n\n" +
+            "keystore: " + "\n" + keystore
+        self.importAccountTextView.text = text
+    } else {}
+}
+```
+
+##### Import Account From Keystore
+```swift
+web3.importAccount(decryptPassword: password, Keystore: Keystore) { [weak self] state, address, privateKey in
+    guard let self = self else { return }
+    self.importAccountBtn.isEnabled = true
+    if state {
+        let text =
+            "address: " + address + "\n\n" +
+            "privateKey: " + privateKey
+        self.importAccountTextView.text = text
+    } else {}
+}
+```
+
+
+##### Import Account From PrivateKey
+```swift
+web3.importAccount(privateKey: privateKey, encrypedPassword: password){ [weak self] state, address, keystore in
+        guard let self = self else { return }
+        self.importAccountBtn.isEnabled = true
+        if state {
+            let text =
+                "address: " + address + "\n\n" +
+                "keystore: " + "\n" + keystore
+            self.importAccountTextView.text = text
+        } else {}
+    }
 ```
 
 ##### Send ETH
