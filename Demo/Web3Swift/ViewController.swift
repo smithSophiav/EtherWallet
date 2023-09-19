@@ -52,7 +52,6 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let chainType = chainTypes[indexPath.section]
         let operationType = operationTypes[indexPath.row]
         switch operationType {
         case .generateAccount:
@@ -63,12 +62,17 @@ extension ViewController: UITableViewDelegate {
             navigationController?.pushViewController(ImportAccountFromPrivateKeyViewController(), animated: true)
         case .importAccountFromMnemonic:
             navigationController?.pushViewController(ImportAccountFromMnemonicViewController(), animated: true)
-        case .ethTransfer,.erc20Transfer:
-            let transferType = transferTypes[indexPath.row]
-            let vc = TransferViewController(chainType, transferType)
+        case .ethTransfer:
+            let vc = TransferViewController(.main, .sendETH)
             navigationController?.pushViewController(vc, animated: true)
-        case .getERC20TokenBalance,.getETHBalance:
-            let vc = GetBalanceViewController.init(chainType, operationType)
+        case.erc20Transfer:
+            let vc = TransferViewController(.main, .sendERC20Token)
+            navigationController?.pushViewController(vc, animated: true)
+        case .getERC20TokenBalance:
+            let vc = GetBalanceViewController.init(.main, .getERC20TokenBalance)
+            navigationController?.pushViewController(vc, animated: true)
+         case .getETHBalance:
+            let vc = GetBalanceViewController.init(.main, .getETHBalance)
             navigationController?.pushViewController(vc, animated: true)
         }
     }

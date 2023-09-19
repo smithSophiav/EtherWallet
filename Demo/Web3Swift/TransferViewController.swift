@@ -180,11 +180,15 @@ class TransferViewController: UIViewController {
         web3.ETHTransfer(recipientAddress: reviceAddress,
                          amount: amountText,
                          senderPrivateKey: privateKey,
-                         providerUrl: providerUrl) { [weak self] state, txid in
+                         providerUrl: providerUrl) { [weak self] (state,txid,error) in
             guard let self = self else { return }
             print("state = \(state)")
             print("txid = \(txid)")
-            self.hashLabel.text = txid
+            if state {
+                self.hashLabel.text = txid
+            } else {
+                self.hashLabel.text = error
+            }
         }
     }
     
@@ -199,11 +203,15 @@ class TransferViewController: UIViewController {
                                 recipientAddress: reviceAddress,
                                 erc20ContractAddress: contractAddress,
                                 amount: amountText,
-                                decimal: 6.0) { [weak self] state, txid in
+                                decimal: 6.0) { [weak self] (state,txid,error) in
             guard let self = self else { return }
             print("state = \(state)")
             print("txid = \(txid)")
-            self.hashLabel.text = txid
+            if state {
+                self.hashLabel.text = txid
+            } else {
+                self.hashLabel.text = error
+            }
         }
     }
  
@@ -246,11 +254,15 @@ class TransferViewController: UIViewController {
         hashLabel.text = "estimate ETH Transaction Fee is caculating...."
         web3.estimateETHTransactionFee(recipientAddress: reviceAddress,
                                        senderAddress: senderAddress,
-                                       amount: amountText) { [weak self] state, estimateTransactionFee in
+                                       amount: amountText) { [weak self] (state,estimateTransactionFee,error) in
             guard let self = self else { return }
             print("state = \(state)")
             print("estimateTransactionFee = \(estimateTransactionFee)")
-            self.hashLabel.text = "estimate Transaction Fee " + estimateTransactionFee + " ETH"
+            if state {
+                self.hashLabel.text = "estimate Transaction Fee " + estimateTransactionFee + " ETH"
+            } else {
+                self.hashLabel.text = error
+            }
         }
     }
     
@@ -268,11 +280,15 @@ class TransferViewController: UIViewController {
                                          senderAddress: senderAddress,
                                          amount: amountText,
                                          decimal: 6.0,
-                                         contractAddress: contractAddress) { [weak self] state, estimateTransactionFee in
+                                         contractAddress: contractAddress) { [weak self] (state,estimateTransactionFee,error) in
             guard let self = self else { return }
             print("state = \(state)")
             print("estimateTransactionFee = \(estimateTransactionFee)")
-            self.hashLabel.text = "estimate Transaction Fee " + estimateTransactionFee + " ETH"
+            if state {
+                self.hashLabel.text = "estimate Transaction Fee " + estimateTransactionFee + " ETH"
+            } else {
+                self.hashLabel.text = error
+            }
         }
     }
     

@@ -96,7 +96,7 @@ class GenerateAccountViewController: UIViewController {
     }
     
     func generateAccount(password:String) {
-        web3.generateAccount(password: password) { [weak self] state, address,mnemonic,privateKey, keystore in
+        web3.generateAccount(password: password) { [weak self] (state, address,mnemonic,privateKey, keystore,error) in
             guard let self = self else { return }
             self.generateAccountBtn.isEnabled = true
             if state {
@@ -107,9 +107,8 @@ class GenerateAccountViewController: UIViewController {
                 "keystore: " + keystore
                 generateAccountTextView.text = text
             } else {
-                
+                generateAccountTextView.text = error
             }
-            
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

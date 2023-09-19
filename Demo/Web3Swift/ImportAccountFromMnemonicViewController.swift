@@ -112,7 +112,7 @@ class ImportAccountFromMnemonicViewController: UIViewController {
     }
 
     func importAccount(mnemonic: String, encrypedPassword: String) {
-        web3.importAccount(mnemonic: mnemonic, encrypedPassword: encrypedPassword){ [weak self] state,address,privateKey,keystore in
+        web3.importAccount(mnemonic: mnemonic, encrypedPassword: encrypedPassword){ [weak self] (state,address,privateKey,keystore,error) in
             guard let self = self else { return }
             self.importAccountBtn.isEnabled = true
             if state {
@@ -121,7 +121,9 @@ class ImportAccountFromMnemonicViewController: UIViewController {
                     "privateKey: " + privateKey + "\n\n" +
                     "keystore: " + "\n" + keystore
                 self.importAccountTextView.text = text
-            } else {}
+            } else {
+                self.importAccountTextView.text = error
+            }
         }
     }
     

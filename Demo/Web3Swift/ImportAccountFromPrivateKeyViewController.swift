@@ -112,7 +112,7 @@ class ImportAccountFromPrivateKeyViewController: UIViewController {
     }
 
     func importAccount(password: String, privateKey: String) {
-        web3.importAccount(privateKey: privateKey, encrypedPassword: password){ [weak self] state, address, keystore in
+        web3.importAccount(privateKey: privateKey, encrypedPassword: password){ [weak self] state, address, keystore,error in
             guard let self = self else { return }
             self.importAccountBtn.isEnabled = true
             if state {
@@ -120,7 +120,9 @@ class ImportAccountFromPrivateKeyViewController: UIViewController {
                     "address: " + address + "\n\n" +
                     "keystore: " + "\n" + keystore
                 self.importAccountTextView.text = text
-            } else {}
+            } else {
+                self.importAccountTextView.text = error
+            }
         }
     }
     

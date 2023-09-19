@@ -137,14 +137,16 @@ class GetBalanceViewController: UIViewController {
 
     func getETHBalance(address: String) {
         print("start get ETH Balance")
-        web3.getETHBalance(address: address) { [weak self] state, balance in
+        web3.getETHBalance(address: address) { [weak self] (state,balance,error) in
             guard let self = self else { return }
             self.getBalanceBtn.isEnabled = true
             if state {
                 let title = "main balance："
                 self.balanceLabel.text = title + balance
                 print("balance = \(balance)")
-            } else {}
+            } else {
+                self.balanceLabel.text = error
+            }
         }
     }
 
@@ -152,13 +154,15 @@ class GetBalanceViewController: UIViewController {
         print("start get ERC20 Balance")
         web3.getERC20TokenBalance(address: address,
                                   contractAddress: contractAddress,
-                                  decimals: 6.0) { [weak self] state, balance in
+                                  decimals: 6.0) { [weak self] (state,balance,error) in
             guard let self = self else { return }
             self.getBalanceBtn.isEnabled = true
             if state {
                 let title = "main balance："
                 self.balanceLabel.text = title + balance + symbol
-            } else {}
+            } else {
+                self.balanceLabel.text = error
+            }
         }
     }
 

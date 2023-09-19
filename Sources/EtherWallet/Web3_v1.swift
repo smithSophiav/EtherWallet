@@ -80,84 +80,115 @@ public class Web3_v1: NSObject {
     }
 
     func loadBundleResource(bundleName: String, sourceName: String) -> String {
-        let bundleResourcePath = Bundle.module.path(forResource: bundleName, ofType: "bundle")
-//        var bundleResourcePath = Bundle.main.path(forResource: "Frameworks/\(bundleName).framework/\(bundleName)", ofType: "bundle")
-//        if bundleResourcePath == nil {
-//            bundleResourcePath = Bundle.main.path(forResource: bundleName, ofType: "bundle") ?? ""
-//        }
+       let bundleResourcePath = Bundle.module.path(forResource: bundleName, ofType: "bundle")
+//         var bundleResourcePath = Bundle.main.path(forResource: "Frameworks/\(bundleName).framework/\(bundleName)", ofType: "bundle")
+//         if bundleResourcePath == nil {
+//             bundleResourcePath = Bundle.main.path(forResource: bundleName, ofType: "bundle") ?? ""
+//         }
 
         return bundleResourcePath! + sourceName
     }
 
     // MARK: generateAccount
 
-    public func generateAccount(password: String, onCompleted: ((Bool, String, String, String, String) -> Void)? = nil) {
+    public func generateAccount(password: String, onCompleted: ((Bool, String, String, String, String, String) -> Void)? = nil) {
         let params: [String: String] = ["password": password]
         self.bridge.call(handlerName: "generateAccount", data: params) { response in
-            if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
-                onCompleted?(false, "error", "error", "error", "error")
+            if self.showLog {
+                print("response = \(String(describing: response))")
+            }
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "", "", "", "", "Invalid response format")
                 return
             }
-            if let address = temp["address"] as? String,
+            if let state = temp["state"] as? Bool, state,
+               let address = temp["address"] as? String,
                let privateKey = temp["privateKey"] as? String,
                let keystore = temp["Keystore"] as? String,
                let mnemonic = temp["mnemonic"] as? String
             {
-                onCompleted?(state, address, mnemonic, privateKey, keystore)
+                onCompleted?(state, address, mnemonic, privateKey, keystore, "")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", "", "", "", error)
+            } else {
+                onCompleted?(false, "", "", "", "", "Unknown response format")
             }
         }
     }
 
     // MARK: importAccount -- (password,Keystore)
+    public func importAccount(decryptPassword: String, keystore: String, onCompleted: ((Bool, String, String, String) -> Void)? = nil) {
+        typealias Parameters = [String: String]
 
-    public func importAccount(decryptPassword: String, Keystore: String, onCompleted: ((Bool, String, String) -> Void)? = nil) {
-        let params: [String: String] = ["decryptPassword": decryptPassword, "Keystore": Keystore]
+        let params: Parameters = ["decryptPassword": decryptPassword, "Keystore": keystore]
+
         self.bridge.call(handlerName: "importAccountFromKeystore", data: params) { response in
-            if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
-                onCompleted?(false, "error", "error")
+            if self.showLog {
+                print("response = \(String(describing: response))")
+            }
+
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "", "", "Invalid response format")
                 return
             }
-            if let address = temp["address"] as? String,
+
+            if let state = temp["state"] as? Bool, state,
+               let address = temp["address"] as? String,
                let privateKey = temp["privateKey"] as? String
             {
-                onCompleted?(state, address, privateKey)
+                onCompleted?(state, address, privateKey, "")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", "", error)
+            } else {
+                onCompleted?(false, "", "", "Unknown response format")
             }
         }
     }
 
     // MARK: importAccount -- (privateKey)
 
-    public func importAccount(privateKey: String, encrypedPassword: String, onCompleted: ((Bool, String, String) -> Void)? = nil) {
+    public func importAccount(privateKey: String, encrypedPassword: String, onCompleted: ((Bool, String, String,String) -> Void)? = nil) {
         let params: [String: String] = ["privateKey": privateKey, "encrypedPassword": encrypedPassword]
         self.bridge.call(handlerName: "importAccountFromPrivateKey", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
-                onCompleted?(false, "error", "error")
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "", "", "Invalid response format")
                 return
             }
-            if let address = temp["address"] as? String, let keystore = temp["Keystore"] as? String {
-                onCompleted?(state, address, keystore)
+            
+            if let state = temp["state"] as? Bool, state,
+               let address = temp["address"] as? String,
+               let keystore = temp["Keystore"] as? String
+            {
+                onCompleted?(state, address, keystore, "")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", "", error)
+            } else {
+                onCompleted?(false, "", "", "Unknown response format")
             }
         }
     }
 
     // MARK: importAccount -- (mnemonic) Only English mnemonics are supported
 
-    public func importAccount(mnemonic: String, encrypedPassword: String, onCompleted: ((Bool, String, String, String) -> Void)? = nil) {
+    public func importAccount(mnemonic: String, encrypedPassword: String, onCompleted: ((Bool, String, String, String,String) -> Void)? = nil) {
         let params: [String: String] = ["mnemonic": mnemonic, "encrypedPassword": encrypedPassword]
         self.bridge.call(handlerName: "importAccountFromMnemonic", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
-                onCompleted?(false, "error", "error", "error")
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "", "", "","Invalid response format")
                 return
             }
-            if let address = temp["address"] as? String,
+            if let state = temp["state"] as? Bool, state,
+               let address = temp["address"] as? String,
                let keystore = temp["Keystore"] as? String,
                let privateKey = temp["privateKey"] as? String
             {
-                onCompleted?(state, address, privateKey, keystore)
+                onCompleted?(state, address,privateKey, keystore, "")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", "","", error)
+            } else {
+                onCompleted?(false, "", "","", "Unknown response format")
             }
         }
     }
@@ -166,18 +197,24 @@ public class Web3_v1: NSObject {
 
     public func getETHBalance(address: String,
                               providerUrl: String = MainNet,
-                              onCompleted: ((Bool, String) -> Void)? = nil)
+                              onCompleted: ((Bool, String,String) -> Void)? = nil)
     {
         let params: [String: String] = ["address": address,
                                         "providerUrl": providerUrl]
         self.bridge.call(handlerName: "getETHBalance", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
-                onCompleted?(false, "error")
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "","Invalid response format")
                 return
             }
-            if let balance = temp["balance"] as? String {
-                onCompleted?(state, balance)
+            if let state = temp["state"] as? Bool, state,
+               let balance = temp["balance"] as? String
+            {
+                onCompleted?(state, balance,"")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", error)
+            } else {
+                onCompleted?(false, "", "Unknown response format")
             }
         }
     }
@@ -188,7 +225,7 @@ public class Web3_v1: NSObject {
                                      contractAddress: String,
                                      decimals: Double,
                                      providerUrl: String = MainNet,
-                                     onCompleted: ((Bool, String) -> Void)? = nil)
+                                     onCompleted: ((Bool, String,String) -> Void)? = nil)
     {
         let params: [String: Any] = ["address": address,
                                      "providerUrl": providerUrl,
@@ -196,12 +233,18 @@ public class Web3_v1: NSObject {
                                      "decimals": decimals]
         self.bridge.call(handlerName: "getERC20TokenBalance", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool else {
-                onCompleted?(false, "error")
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "","Invalid response format")
                 return
             }
-            if let balance = temp["balance"] as? String {
-                onCompleted?(state, balance)
+            if let state = temp["state"] as? Bool, state,
+               let balance = temp["balance"] as? String
+            {
+                onCompleted?(state, balance,"")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", error)
+            } else {
+                onCompleted?(false, "", "Unknown response format")
             }
         }
     }
@@ -212,7 +255,7 @@ public class Web3_v1: NSObject {
                                           senderAddress: String,
                                           amount: String,
                                           providerUrl: String = MainNet,
-                                          onCompleted: ((Bool, String) -> Void)? = nil)
+                                          onCompleted: ((Bool, String,String) -> Void)? = nil)
     {
         let params: [String: String] = ["recipientAddress": recipientAddress,
                                         "providerUrl": providerUrl,
@@ -220,11 +263,19 @@ public class Web3_v1: NSObject {
                                         "amount": amount]
         self.bridge.call(handlerName: "estimateETHTransactionFee", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool, let estimateTransactionFee = temp["estimateTransactionFee"] as? String else {
-                onCompleted?(false, "error")
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "","Invalid response format")
                 return
             }
-            onCompleted?(state, estimateTransactionFee)
+            if let state = temp["state"] as? Bool, state,
+               let estimateTransactionFee = temp["estimateTransactionFee"] as? String
+            {
+                onCompleted?(state, estimateTransactionFee,"")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", error)
+            } else {
+                onCompleted?(false, "", "Unknown response format")
+            }
         }
     }
 
@@ -236,7 +287,7 @@ public class Web3_v1: NSObject {
                                             amount: String,
                                             decimal: Double = 6,
                                             contractAddress: String,
-                                            onCompleted: ((Bool, String) -> Void)? = nil)
+                                            onCompleted: ((Bool, String,String) -> Void)? = nil)
     {
         let params: [String: Any] = ["providerUrl": providerUrl,
                                      "recipientAddress": recipientAddress,
@@ -246,11 +297,19 @@ public class Web3_v1: NSObject {
                                      "decimal": decimal]
         self.bridge.call(handlerName: "estimateERC20TransactionFee", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool, let estimateTransactionFee = temp["estimateTransactionFee"] as? String else {
-                onCompleted?(false, "error")
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "","Invalid response format")
                 return
             }
-            onCompleted?(state, estimateTransactionFee)
+            if let state = temp["state"] as? Bool, state,
+               let estimateTransactionFee = temp["estimateTransactionFee"] as? String
+            {
+                onCompleted?(state, estimateTransactionFee,"")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", error)
+            } else {
+                onCompleted?(false, "", "Unknown response format")
+            }
         }
     }
 
@@ -260,7 +319,7 @@ public class Web3_v1: NSObject {
                             amount: String,
                             senderPrivateKey: String,
                             providerUrl: String = MainNet,
-                            onCompleted: ((Bool, String) -> Void)? = nil)
+                            onCompleted: ((Bool, String,String) -> Void)? = nil)
     {
         let params: [String: String] = ["recipientAddress": recipientAddress,
                                         "providerUrl": providerUrl,
@@ -268,11 +327,20 @@ public class Web3_v1: NSObject {
                                         "amount": amount]
         self.bridge.call(handlerName: "ETHTransfer", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool, let txid = temp["txid"] as? String else {
-                onCompleted?(false, "error")
+            
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "","Invalid response format")
                 return
             }
-            onCompleted?(state, txid)
+            if let state = temp["state"] as? Bool, state,
+               let txid = temp["txid"] as? String
+            {
+                onCompleted?(state, txid,"")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", error)
+            } else {
+                onCompleted?(false, "", "Unknown response format")
+            }
         }
     }
 
@@ -284,7 +352,7 @@ public class Web3_v1: NSObject {
                                    erc20ContractAddress: String,
                                    amount: String,
                                    decimal: Double = 6,
-                                   onCompleted: ((Bool, String) -> Void)? = nil)
+                                   onCompleted: ((Bool, String,String) -> Void)? = nil)
     {
         let params: [String: Any] = ["recipientAddress": recipientAddress,
                                      "providerUrl": providerUrl,
@@ -294,11 +362,19 @@ public class Web3_v1: NSObject {
                                      "decimal": decimal]
         self.bridge.call(handlerName: "ERC20Transfer", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
-            guard let temp = response as? [String: Any], let state = temp["state"] as? Bool, let txid = temp["txid"] as? String else {
-                onCompleted?(false, "error")
+            guard let temp = response as? [String: Any] else {
+                onCompleted?(false, "","Invalid response format")
                 return
             }
-            onCompleted?(state, txid)
+            if let state = temp["state"] as? Bool, state,
+               let txid = temp["txid"] as? String
+            {
+                onCompleted?(state, txid,"")
+            } else if let error = temp["error"] as? String {
+                onCompleted?(false, "", error)
+            } else {
+                onCompleted?(false, "", "Unknown response format")
+            }
         }
     }
 }
