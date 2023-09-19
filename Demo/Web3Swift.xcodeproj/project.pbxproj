@@ -161,6 +161,7 @@
 			);
 			mainGroup = EF0730222A99D090005AF8AD;
 			packageReferences = (
+				EF7B225E2AB9C9300063A563 /* XCRemoteSwiftPackageReference "EtherWallet" */,
 			);
 			productRefGroup = EF07302C2A99D090005AF8AD /* Products */;
 			projectDirPath = "";
@@ -458,6 +459,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EF7B225E2AB9C9300063A563 /* XCRemoteSwiftPackageReference "EtherWallet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smithSophiav/EtherWallet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = EF0730232A99D090005AF8AD /* Project object */;
 }
