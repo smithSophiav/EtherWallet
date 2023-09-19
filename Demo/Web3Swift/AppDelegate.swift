@@ -1,7 +1,6 @@
 //
 //  AppDelegate.swift
 //  Web3Swift
-//
 //  Created by smithSophiav on 2023/8/26.
 
 
