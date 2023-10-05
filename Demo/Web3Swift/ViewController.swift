@@ -9,6 +9,7 @@ import SnapKit
 import UIKit
 enum ChainType: String, CaseIterable {
     case main
+    case goerli
 }
 enum OperationType: String, CaseIterable {
     case generateAccount
@@ -53,6 +54,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let operationType = operationTypes[indexPath.row]
+        let chainType = chainTypes[indexPath.section]
         switch operationType {
         case .generateAccount:
             navigationController?.pushViewController(GenerateAccountViewController(), animated: true)
@@ -63,7 +65,7 @@ extension ViewController: UITableViewDelegate {
         case .importAccountFromMnemonic:
             navigationController?.pushViewController(ImportAccountFromMnemonicViewController(), animated: true)
         case .ethTransfer:
-            let vc = TransferViewController(.main, .sendETH)
+            let vc = TransferViewController(chainType, .sendETH)
             navigationController?.pushViewController(vc, animated: true)
         case.erc20Transfer:
             let vc = TransferViewController(.main, .sendERC20Token)
@@ -72,7 +74,7 @@ extension ViewController: UITableViewDelegate {
             let vc = GetBalanceViewController.init(.main, .getERC20TokenBalance)
             navigationController?.pushViewController(vc, animated: true)
          case .getETHBalance:
-            let vc = GetBalanceViewController.init(.main, .getETHBalance)
+            let vc = GetBalanceViewController.init(chainType, .getETHBalance)
             navigationController?.pushViewController(vc, animated: true)
         }
     }

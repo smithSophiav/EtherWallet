@@ -84,7 +84,7 @@ class GetBalanceViewController: UIViewController {
     }
 
     func setupNav() {
-        title = "get balance in main"
+        title = chainType == .main ? "get balance in main" :"get balance in goerli"
     }
 
     func setupContent() {
@@ -137,11 +137,14 @@ class GetBalanceViewController: UIViewController {
 
     func getETHBalance(address: String) {
         print("start get ETH Balance")
-        web3.getETHBalance(address: address) { [weak self] (state,balance,error) in
+        
+        let providerUrl = chainType == .main ? MainNet : "https://goerli.infura.io/v3/fe816c09404d406f8f47af0b78413806"
+        
+        web3.getETHBalance(address: address,providerUrl: providerUrl) { [weak self] (state,balance,error) in
             guard let self = self else { return }
             self.getBalanceBtn.isEnabled = true
             if state {
-                let title = "main balance："
+                let title = chainType == .main ? "main balance：" : "goerli balance: "
                 self.balanceLabel.text = title + balance
                 print("balance = \(balance)")
             } else {
@@ -152,13 +155,17 @@ class GetBalanceViewController: UIViewController {
 
     func getERC20Balance(address: String, contractAddress: String, symbol: String) {
         print("start get ERC20 Balance")
+        
+        let providerUrl = chainType == .main ? MainNet : "https://goerli.infura.io/v3/fe816c09404d406f8f47af0b78413806"
+        
         web3.getERC20TokenBalance(address: address,
                                   contractAddress: contractAddress,
-                                  decimals: 6.0) { [weak self] (state,balance,error) in
+                                  decimals: 6.0,
+                                  providerUrl:providerUrl) { [weak self] (state,balance,error) in
             guard let self = self else { return }
             self.getBalanceBtn.isEnabled = true
             if state {
-                let title = "main balance："
+                let title = chainType == .main ? "main balance：" : "goerli balance: "
                 self.balanceLabel.text = title + balance + symbol
             } else {
                 self.balanceLabel.text = error

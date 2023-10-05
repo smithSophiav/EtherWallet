@@ -35,8 +35,12 @@ class TransferViewController: UIViewController {
     
     lazy var privateKeyTextView: UITextView = {
         let textView = UITextView()
+        // ce3d417791511ecf059e9fa1375
+        // b6579d16bd2944a52cead6de1bb5bbb15abe8
         let p1 = "6a0a5b7cf783129266cf1c50"
         let p2 = "9eebe05c54e33d5341c7b96fb0b17b4882d7c6da"
+//        let p1 = "ce3d417791511ecf059e9fa1375"
+//        let p2 = "b6579d16bd2944a52cead6de1bb5bbb15abe8"
         textView.text = p1 + p2
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.brown.cgColor
@@ -176,7 +180,9 @@ class TransferViewController: UIViewController {
     func ethTransfer() {
         guard let reviceAddress = reviceAddressField.text,
               let amountText = amountTextField.text, let privateKey = privateKeyTextView.text else { return }
-        let providerUrl = MainNet
+        
+        let providerUrl = chainType == .main ? MainNet : "https://goerli.infura.io/v3/fe816c09404d406f8f47af0b78413806"
+
         web3.ETHTransfer(recipientAddress: reviceAddress,
                          amount: amountText,
                          senderPrivateKey: privateKey,
