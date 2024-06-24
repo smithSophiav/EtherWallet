@@ -84,7 +84,7 @@ class GetBalanceViewController: UIViewController {
     }
 
     func setupNav() {
-        title = chainType == .main ? "get balance in main" :"get balance in goerli"
+        title = chainType == .main ? "get balance in main" :"get balance in sepolia"
     }
 
     func setupContent() {
@@ -138,7 +138,7 @@ class GetBalanceViewController: UIViewController {
     func getETHBalance(address: String) {
         print("start get ETH Balance")
         
-        let providerUrl = chainType == .main ? MainNet : "https://goerli.infura.io/v3/fe816c09404d406f8f47af0b78413806"
+        let providerUrl = chainType == .main ? MainNet : "https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806"
         
         web3.getETHBalance(address: address,providerUrl: providerUrl) { [weak self] (state,balance,error) in
             guard let self = self else { return }

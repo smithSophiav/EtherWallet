@@ -35,12 +35,9 @@ class TransferViewController: UIViewController {
     
     lazy var privateKeyTextView: UITextView = {
         let textView = UITextView()
-        // ce3d417791511ecf059e9fa1375
-        // b6579d16bd2944a52cead6de1bb5bbb15abe8
-        let p1 = "6a0a5b7cf783129266cf1c50"
-        let p2 = "9eebe05c54e33d5341c7b96fb0b17b4882d7c6da"
-//        let p1 = "ce3d417791511ecf059e9fa1375"
-//        let p2 = "b6579d16bd2944a52cead6de1bb5bbb15abe8"
+        //
+        let p1 = "6e6fc8e1b12d1075e5df6f3eb0c2"
+        let p2 = "010827f7ad18632c4434791cf25d3d4d38d8"
         textView.text = p1 + p2
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.brown.cgColor
@@ -123,7 +120,7 @@ class TransferViewController: UIViewController {
     }
 
     func setupNav() {
-        title = chainType == .main ? "mainnet transfer" : "goerlNet transfer"
+        title = chainType == .main ? "mainnet transfer" : "sepoliaNet transfer"
     }
     
     func setupContent() {
@@ -180,8 +177,8 @@ class TransferViewController: UIViewController {
     func ethTransfer() {
         guard let reviceAddress = reviceAddressField.text,
               let amountText = amountTextField.text, let privateKey = privateKeyTextView.text else { return }
-        
-        let providerUrl = chainType == .main ? MainNet : "https://goerli.infura.io/v3/fe816c09404d406f8f47af0b78413806"
+        // https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806
+        let providerUrl = chainType == .main ? MainNet : "https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806"
 
         web3.ETHTransfer(recipientAddress: reviceAddress,
                          amount: amountText,
@@ -236,7 +233,7 @@ class TransferViewController: UIViewController {
 
     @objc func queryAction() {
         guard let hash = hashLabel.text, hash.count > 10 else { return }
-        var urlString = chainType == .main ? "https://etherscan.io/tx/" : "https://goerli.etherscan.io/tx/"
+        var urlString = chainType == .main ? "https://etherscan.io/tx/" : "https://sepolia.etherscan.io/tx/"
         urlString += hash
         showSafariVC(for: urlString)
     }
@@ -256,11 +253,14 @@ class TransferViewController: UIViewController {
     func estimateETHTransactionFee() {
         guard let reviceAddress = reviceAddressField.text,
               let amountText = amountTextField.text else { return }
-        let senderAddress = "0x2bD47B6fbCb229dDc69534Ac564D93C264F70453"
+        let senderAddress = "0x6648Ee1bc5a10856D72b197cC9bA23B7002AA8F1"
         hashLabel.text = "estimate ETH Transaction Fee is caculating...."
+        // https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806
+        let providerUrl = chainType == .main ? MainNet : "https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806"
         web3.estimateETHTransactionFee(recipientAddress: reviceAddress,
                                        senderAddress: senderAddress,
-                                       amount: amountText) { [weak self] (state,estimateTransactionFee,error) in
+                                       amount: amountText,
+                                       providerUrl: providerUrl) { [weak self] (state,estimateTransactionFee,error) in
             guard let self = self else { return }
             print("state = \(state)")
             print("estimateTransactionFee = \(estimateTransactionFee)")

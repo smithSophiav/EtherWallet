@@ -9,7 +9,7 @@ import SnapKit
 import UIKit
 enum ChainType: String, CaseIterable {
     case main
-    case goerli
+    case sepolia
 }
 enum OperationType: String, CaseIterable {
     case generateAccount
