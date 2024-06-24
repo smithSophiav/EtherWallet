@@ -103,6 +103,23 @@ let text =
  }
 }
 ```
+##### Estimate fee Send ETH
+```swift
+let providerUrl = chainType == .main ? MainNet : "https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806"
+web3.estimateETHTransactionFee(recipientAddress: reviceAddress,
+                               senderAddress: senderAddress,
+                               amount: amountText,
+                               providerUrl: providerUrl) { [weak self] (state,estimateTransactionFee,error) in
+    guard let self = self else { return }
+    print("state = \(state)")
+    print("estimateTransactionFee = \(estimateTransactionFee)")
+    if state {
+        self.hashLabel.text = "estimate Transaction Fee " + estimateTransactionFee + " ETH"
+    } else {
+        self.hashLabel.text = error
+    }
+}
+```
 
 ##### Send ETH
 ```swift
@@ -117,6 +134,25 @@ if state {
     self.hashLabel.text = txid
 } else {
     self.hashLabel.text = error
+}
+}
+```
+
+##### Estimate fee Send ERC20
+```swift
+web3.estimateERC20TransactionFee(providerUrl: providerUrl,
+                         recipientAddress: reviceAddress,
+                         senderAddress: senderAddress,
+                         amount: amountText,
+                         decimal: 6.0,
+                         contractAddress: contractAddress) { [weak self] (state,estimateTransactionFee,error) in
+guard let self = self else { return }
+print("state = \(state)")
+print("estimateTransactionFee = \(estimateTransactionFee)")
+if state {
+self.hashLabel.text = "estimate Transaction Fee " + estimateTransactionFee + " ETH"
+} else {
+self.hashLabel.text = error
 }
 }
 ```
