@@ -255,7 +255,7 @@ public class Web3_v1: NSObject {
                                           senderAddress: String,
                                           amount: String,
                                           providerUrl: String = MainNet,
-                                          onCompleted: ((Bool, String,String) -> Void)? = nil)
+                                          onCompleted: ((Bool, String,String,String,String) -> Void)? = nil)
     {
         let params: [String: String] = ["recipientAddress": recipientAddress,
                                         "providerUrl": providerUrl,
@@ -264,17 +264,19 @@ public class Web3_v1: NSObject {
         self.bridge.call(handlerName: "estimateETHTransactionFee", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
             guard let temp = response as? [String: Any] else {
-                onCompleted?(false, "","Invalid response format")
+                onCompleted?(false, "","","","Invalid response format")
                 return
             }
             if let state = temp["state"] as? Bool, state,
-               let estimateTransactionFee = temp["estimateTransactionFee"] as? String
+               let estimateTransactionFee = temp["estimateTransactionFee"] as? String,
+                let gasEstimate = temp["gasEstimate"] as? String,
+                let gasPrice = temp["gasPrice"] as? String
             {
-                onCompleted?(state, estimateTransactionFee,"")
+                onCompleted?(state, estimateTransactionFee,gasEstimate,gasPrice,"")
             } else if let error = temp["error"] as? String {
-                onCompleted?(false, "", error)
+                onCompleted?(false, "","","", error)
             } else {
-                onCompleted?(false, "", "Unknown response format")
+                onCompleted?(false, "","","", "Unknown response format")
             }
         }
     }
@@ -285,30 +287,34 @@ public class Web3_v1: NSObject {
                                             recipientAddress: String,
                                             senderAddress: String,
                                             amount: String,
+                                            gasLimit:Int64 = 100000,
                                             decimal: Double = 6,
                                             contractAddress: String,
-                                            onCompleted: ((Bool, String,String) -> Void)? = nil)
+                                            onCompleted: ((Bool, String,String,String,String) -> Void)? = nil)
     {
         let params: [String: Any] = ["providerUrl": providerUrl,
                                      "recipientAddress": recipientAddress,
                                      "senderAddress": senderAddress,
                                      "amount": amount,
+                                     "gasLimit":gasLimit,
                                      "contractAddress": contractAddress,
                                      "decimal": decimal]
         self.bridge.call(handlerName: "estimateERC20TransactionFee", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
             guard let temp = response as? [String: Any] else {
-                onCompleted?(false, "","Invalid response format")
+                onCompleted?(false, "","","","Invalid response format")
                 return
             }
             if let state = temp["state"] as? Bool, state,
-               let estimateTransactionFee = temp["estimateTransactionFee"] as? String
+               let estimateTransactionFee = temp["estimateTransactionFee"] as? String,
+               let gasEstimate = temp["gasEstimate"] as? String,
+               let gasPrice = temp["gasPrice"] as? String
             {
-                onCompleted?(state, estimateTransactionFee,"")
+                onCompleted?(state, estimateTransactionFee,gasEstimate,gasPrice,"")
             } else if let error = temp["error"] as? String {
-                onCompleted?(false, "", error)
+                onCompleted?(false, "","","", error)
             } else {
-                onCompleted?(false, "", "Unknown response format")
+                onCompleted?(false, "","","", "Unknown response format")
             }
         }
     }
@@ -317,6 +323,7 @@ public class Web3_v1: NSObject {
 
     public func ETHTransfer(recipientAddress: String,
                             amount: String,
+                            gasLimit:Int64 = 21000,
                             senderPrivateKey: String,
                             providerUrl: String = MainNet,
                             onCompleted: ((Bool, String,String) -> Void)? = nil)
@@ -324,6 +331,7 @@ public class Web3_v1: NSObject {
         let params: [String: String] = ["recipientAddress": recipientAddress,
                                         "providerUrl": providerUrl,
                                         "senderPrivateKey": senderPrivateKey,
+                                        "gasLimit":gasLimit,
                                         "amount": amount]
         self.bridge.call(handlerName: "ETHTransfer", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
@@ -350,6 +358,7 @@ public class Web3_v1: NSObject {
                                    senderPrivateKey: String,
                                    recipientAddress: String,
                                    erc20ContractAddress: String,
+                                   gasLimit:Int64 = 100000,
                                    amount: String,
                                    decimal: Double = 6,
                                    onCompleted: ((Bool, String,String) -> Void)? = nil)
@@ -359,6 +368,7 @@ public class Web3_v1: NSObject {
                                      "senderPrivateKey": senderPrivateKey,
                                      "contractAddress": erc20ContractAddress,
                                      "amount": amount,
+                                     "gasLimit":gasLimit,
                                      "decimal": decimal]
         self.bridge.call(handlerName: "ERC20Transfer", data: params) { response in
             if self.showLog { print("response = \(String(describing: response))") }
