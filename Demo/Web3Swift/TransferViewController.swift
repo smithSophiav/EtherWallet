@@ -182,6 +182,7 @@ class TransferViewController: UIViewController {
 
         web3.ETHTransfer(recipientAddress: reviceAddress,
                          amount: amountText,
+                         gasLimit: 21000,
                          senderPrivateKey: privateKey,
                          providerUrl: providerUrl) { [weak self] (state,txid,error) in
             guard let self = self else { return }
@@ -205,6 +206,7 @@ class TransferViewController: UIViewController {
                                 senderPrivateKey: privateKey,
                                 recipientAddress: reviceAddress,
                                 erc20ContractAddress: contractAddress,
+                                gasLimit: 100000,
                                 amount: amountText,
                                 decimal: 6.0) { [weak self] (state,txid,error) in
             guard let self = self else { return }
@@ -219,6 +221,7 @@ class TransferViewController: UIViewController {
     }
  
     @objc func transferAction() {
+        print("-----------start transferAction-------")
         if web3.isWeb3LoadFinished {
             transferType == .sendETH ? ethTransfer() : erc20Transfer()
         } else {
@@ -253,14 +256,14 @@ class TransferViewController: UIViewController {
     func estimateETHTransactionFee() {
         guard let reviceAddress = reviceAddressField.text,
               let amountText = amountTextField.text else { return }
-        let senderAddress = "0x6648Ee1bc5a10856D72b197cC9bA23B7002AA8F1"
+        let senderAddress = "0x0308efE4840D0D35bB1073c3e835df5272CAad4e"
         hashLabel.text = "estimate ETH Transaction Fee is caculating...."
         // https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806
         let providerUrl = chainType == .main ? MainNet : "https://sepolia.infura.io/v3/fe816c09404d406f8f47af0b78413806"
         web3.estimateETHTransactionFee(recipientAddress: reviceAddress,
                                        senderAddress: senderAddress,
                                        amount: amountText,
-                                       providerUrl: providerUrl) { [weak self] (state,estimateTransactionFee,error) in
+                                       providerUrl: providerUrl) { [weak self] (state,estimateTransactionFee,gasEstimate,gasPrice,error) in
             guard let self = self else { return }
             print("state = \(state)")
             print("estimateTransactionFee = \(estimateTransactionFee)")
@@ -277,7 +280,7 @@ class TransferViewController: UIViewController {
               let contractAddress = erc20AddressTextField.text,
               let amountText = amountTextField.text else { return }
         let providerUrl = MainNet
-        let senderAddress = "0x2bD47B6fbCb229dDc69534Ac564D93C264F70453"
+        let senderAddress = "0x0308efE4840D0D35bB1073c3e835df5272CAad4e"
         
         hashLabel.text = "estimate ERC20 Transaction Fee is caculating...."
         
@@ -286,7 +289,7 @@ class TransferViewController: UIViewController {
                                          senderAddress: senderAddress,
                                          amount: amountText,
                                          decimal: 6.0,
-                                         contractAddress: contractAddress) { [weak self] (state,estimateTransactionFee,error) in
+                                         contractAddress: contractAddress) { [weak self] (state,estimateTransactionFee,gasEstimate,gasPrice,error) in
             guard let self = self else { return }
             print("state = \(state)")
             print("estimateTransactionFee = \(estimateTransactionFee)")
