@@ -287,7 +287,7 @@ public class Web3_v1: NSObject {
                                             recipientAddress: String,
                                             senderAddress: String,
                                             amount: String,
-                                            gasLimit:Int64 = 100000,
+                                            gasLimit:Int32 = 100000,
                                             decimal: Double = 6,
                                             contractAddress: String,
                                             onCompleted: ((Bool, String,String,String,String) -> Void)? = nil)
@@ -323,12 +323,12 @@ public class Web3_v1: NSObject {
 
     public func ETHTransfer(recipientAddress: String,
                             amount: String,
-                            gasLimit:Int64 = 21000,
+                            gasLimit:Int32 = 21000,
                             senderPrivateKey: String,
                             providerUrl: String = MainNet,
                             onCompleted: ((Bool, String,String) -> Void)? = nil)
     {
-        let params: [String: String] = ["recipientAddress": recipientAddress,
+        let params: [String: Any] = ["recipientAddress": recipientAddress,
                                         "providerUrl": providerUrl,
                                         "senderPrivateKey": senderPrivateKey,
                                         "gasLimit":gasLimit,
@@ -358,7 +358,7 @@ public class Web3_v1: NSObject {
                                    senderPrivateKey: String,
                                    recipientAddress: String,
                                    erc20ContractAddress: String,
-                                   gasLimit:Int64 = 100000,
+                                   gasLimit:Int32 = 100000,
                                    amount: String,
                                    decimal: Double = 6,
                                    onCompleted: ((Bool, String,String) -> Void)? = nil)
