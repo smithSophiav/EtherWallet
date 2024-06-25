@@ -15,7 +15,7 @@ The Swift Package Manager  is a tool for automating the distribution of Swift co
 Once you have your Swift package set up, adding EtherWallet as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 ```ruby
 dependencies: [
-    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.0.4"))
+    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.0.9"))
 ]
 ```
 ### Example usage
@@ -109,7 +109,7 @@ let providerUrl = chainType == .main ? MainNet : "https://sepolia.infura.io/v3/f
 web3.estimateETHTransactionFee(recipientAddress: reviceAddress,
                                senderAddress: senderAddress,
                                amount: amountText,
-                               providerUrl: providerUrl) { [weak self] (state,estimateTransactionFee,error) in
+                               providerUrl: providerUrl) { [weak self] (state,estimateTransactionFee,gasEstimate,gasPrice,error) in
     guard let self = self else { return }
     print("state = \(state)")
     print("estimateTransactionFee = \(estimateTransactionFee)")
@@ -145,7 +145,7 @@ web3.estimateERC20TransactionFee(providerUrl: providerUrl,
                          senderAddress: senderAddress,
                          amount: amountText,
                          decimal: 6.0,
-                         contractAddress: contractAddress) { [weak self] (state,estimateTransactionFee,error) in
+                         contractAddress: contractAddress) { [weak self] (state,estimateTransactionFee,gasEstimate,gasPrice,error) in
 guard let self = self else { return }
 print("state = \(state)")
 print("estimateTransactionFee = \(estimateTransactionFee)")
