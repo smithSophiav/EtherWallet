@@ -9,13 +9,19 @@
 
 For more specific usage, please refer to the [demo](https://github.com/smithSophiav/EtherWallet/tree/main/Demo)
 
+### Installation with CocoaPods
+Add this to your [podfile](https://guides.cocoapods.org/using/getting-started.html) and run `pod install` to install:
+
+```ruby
+pod 'web3swift-alpha', '~> 1.1.0'
+```
 ### Swift Package Manager
 The Swift Package Manager  is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
 Once you have your Swift package set up, adding EtherWallet as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 ```ruby
 dependencies: [
-    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.0.9"))
+    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.1.0"))
 ]
 ```
 ### Example usage
