@@ -17,7 +17,6 @@
 		EF0730432A99D3F4005AF8AD /* GetBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730422A99D3F4005AF8AD /* GetBalanceViewController.swift */; };
 		EF0730452A99D417005AF8AD /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730442A99D417005AF8AD /* TransferViewController.swift */; };
 		EF0730492A99E445005AF8AD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0730482A99E445005AF8AD /* Constant.swift */; };
-		EF3172702C2AF495008B2676 /* EtherWallet in Frameworks */ = {isa = PBXBuildFile; productRef = EF31726F2C2AF495008B2676 /* EtherWallet */; };
 		EF3456EE2AB6C99B0048AD82 /* GenerateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3456ED2AB6C99B0048AD82 /* GenerateAccountViewController.swift */; };
 		EF3456F02AB6CA6A0048AD82 /* ImportAccountFromKeystoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3456EF2AB6CA6A0048AD82 /* ImportAccountFromKeystoreViewController.swift */; };
 		EF3456F22AB815CA0048AD82 /* ImportAccountFromPrivateKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3456F12AB815CA0048AD82 /* ImportAccountFromPrivateKeyViewController.swift */; };
@@ -50,7 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF3172702C2AF495008B2676 /* EtherWallet in Frameworks */,
 				177E06494D5B48A2AAF2FEF1 /* Pods_Web3Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,7 +131,6 @@
 			);
 			name = Web3Swift;
 			packageProductDependencies = (
-				EF31726F2C2AF495008B2676 /* EtherWallet */,
 			);
 			productName = Web3Swift;
 			productReference = EF07302B2A99D090005AF8AD /* Web3Swift.app */;
@@ -164,7 +161,6 @@
 			);
 			mainGroup = EF0730222A99D090005AF8AD;
 			packageReferences = (
-				EF31726E2C2AF495008B2676 /* XCRemoteSwiftPackageReference "EtherWallet" */,
 			);
 			productRefGroup = EF07302C2A99D090005AF8AD /* Products */;
 			projectDirPath = "";
@@ -462,25 +458,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		EF31726E2C2AF495008B2676 /* XCRemoteSwiftPackageReference "EtherWallet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/smithSophiav/EtherWallet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.9;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		EF31726F2C2AF495008B2676 /* EtherWallet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EF31726E2C2AF495008B2676 /* XCRemoteSwiftPackageReference "EtherWallet" */;
-			productName = EtherWallet;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF0730232A99D090005AF8AD /* Project object */;
 }

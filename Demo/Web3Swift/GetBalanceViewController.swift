@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import EtherWallet
+import web3swift_alpha
 enum GetBalanceType: String, CaseIterable {
     case getETHBalance
     case getERC20TokenBalance

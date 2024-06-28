@@ -74,18 +74,16 @@ public class Web3_v1: NSObject {
             self.isWeb3LoadFinished = true
             self.onCompleted?(true)
         }
-        let htmlSource = self.loadBundleResource(bundleName: "web3swift", sourceName: "/Index.html")
+        let htmlSource = self.loadBundleResource(bundleName: "web3swift_alpha", sourceName: "/Index.html")
         let url = URL(fileURLWithPath: htmlSource)
         self.webView.loadFileURL(url, allowingReadAccessTo: url)
     }
 
     func loadBundleResource(bundleName: String, sourceName: String) -> String {
-//       let bundleResourcePath = Bundle.module.path(forResource: bundleName, ofType: "bundle")
-         var bundleResourcePath = Bundle.main.path(forResource: "Frameworks/\(bundleName).framework/\(bundleName)", ofType: "bundle")
+         var bundleResourcePath = Bundle.main.path(forResource: "Frameworks/\(bundleName).framework/\("web3swift")", ofType: "bundle")
          if bundleResourcePath == nil {
              bundleResourcePath = Bundle.main.path(forResource: bundleName, ofType: "bundle") ?? ""
          }
-
         return bundleResourcePath! + sourceName
     }
 
