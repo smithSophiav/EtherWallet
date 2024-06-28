@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "web3swift-alpha"
-  s.version      = "1.1.0"
+  s.version      = "1.1.1"
   s.summary      = "Generate Account、Import Account、 ETH Transfer/ ERC20 Transfer/ Get ETH Balance/ ERC20 Balance /estimate Transaction Fee with Swift."
 
   # This description is used to generate tags and improve search results.

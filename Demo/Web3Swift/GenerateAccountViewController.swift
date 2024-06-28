@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import web3swift_alpha
+import EtherWallet
 class GenerateAccountViewController: UIViewController {
 
     lazy var web3: Web3_v1 = .init()

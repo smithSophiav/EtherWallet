@@ -8,7 +8,7 @@
 import SafariServices
 import SnapKit
 import UIKit
-import web3swift_alpha
+import EtherWallet
 enum TransferType: String, CaseIterable {
     case sendETH
     case sendERC20Token

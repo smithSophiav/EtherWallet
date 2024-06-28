@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import web3swift_alpha
+import EtherWallet
 
 class ImportAccountFromPrivateKeyViewController: UIViewController {
     lazy var web3: Web3_v1 = .init()
