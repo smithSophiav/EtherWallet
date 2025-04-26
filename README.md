@@ -191,4 +191,5 @@ For more detailed usage methods, it is recommended to refer to [demo](https://gi
 
 ## License
 
+
 EtherWallet is released under the MIT license. [See LICENSE](https://github.com/smithSophiav/EtherWallet/blob/main/LICENSE) for details.
