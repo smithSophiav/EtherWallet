@@ -12,7 +12,7 @@ For more specific usage, please refer to the [demo](https://github.com/smithSoph
 
 ```ruby
 dependencies: [
-    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.1.2"))
+    .package(url: "https://github.com/smithSophiav/EtherWallet.git", .upToNextMajor(from: "1.1.6"))
 ]
 ```
 ### Example usage in Swift Package Manager
