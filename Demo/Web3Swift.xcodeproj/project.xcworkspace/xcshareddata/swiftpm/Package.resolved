@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/smithSophiav/EtherWallet.git",
       "state" : {
-        "revision" : "21dc367b0aba417d0bc23bd2db9007278edd395e",
-        "version" : "1.1.5"
+        "revision" : "cccf7423421ce2dac7a14f6413391152bbc2a9aa",
+        "version" : "1.1.6"
       }
     },
     {
