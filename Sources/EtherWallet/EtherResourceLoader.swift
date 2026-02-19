@@ -25,14 +25,11 @@ public enum EtherResourceLoader {
         ext: String,
         subdirectory: String? = nil
     ) -> URL? {
-        let bundle = Bundle(for: EtherBundleToken.self)
-        if let url = bundle.url(forResource: name, withExtension: ext, subdirectory: subdirectory) {
-            return url
-        }
         #if SWIFT_PACKAGE
         return Bundle.module.url(forResource: name, withExtension: ext, subdirectory: subdirectory)
         #else
-        return nil
+        let bundle = Bundle(for: TronBundleToken.self)
+        return bundle.url(forResource: name, withExtension: ext, subdirectory: subdirectory)
         #endif
     }
 }
