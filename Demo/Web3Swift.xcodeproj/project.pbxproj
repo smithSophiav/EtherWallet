@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04E8DAF02F45C2E100B28E40 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04E8DAEF2F45C2E100B28E40 /* SnapKit */; };
-		04E8DCB42F46F36300B28E40 /* EtherWallet in Frameworks */ = {isa = PBXBuildFile; productRef = 04E8DCB32F46F36300B28E40 /* EtherWallet */; };
+		04E8DD2D2F46FE9A00B28E40 /* EtherWallet in Frameworks */ = {isa = PBXBuildFile; productRef = 04E8DD2C2F46FE9A00B28E40 /* EtherWallet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E8DCB42F46F36300B28E40 /* EtherWallet in Frameworks */,
+				04E8DD2D2F46FE9A00B28E40 /* EtherWallet in Frameworks */,
 				04E8DAF02F45C2E100B28E40 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,7 +86,7 @@
 			name = Web3Swift;
 			packageProductDependencies = (
 				04E8DAEF2F45C2E100B28E40 /* SnapKit */,
-				04E8DCB32F46F36300B28E40 /* EtherWallet */,
+				04E8DD2C2F46FE9A00B28E40 /* EtherWallet */,
 			);
 			productName = Web3Swift;
 			productReference = 04E8DA9F2F45B6F200B28E40 /* Web3Swift.app */;
@@ -118,7 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				04E8DAEE2F45C2E100B28E40 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				04E8DCB22F46F36300B28E40 /* XCRemoteSwiftPackageReference "EtherWallet" */,
+				04E8DD2B2F46FE9A00B28E40 /* XCRemoteSwiftPackageReference "EtherWallet" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 04E8DAA02F45B6F200B28E40 /* Products */;
@@ -356,12 +356,12 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		04E8DCB22F46F36300B28E40 /* XCRemoteSwiftPackageReference "EtherWallet" */ = {
+		04E8DD2B2F46FE9A00B28E40 /* XCRemoteSwiftPackageReference "EtherWallet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/smithSophiav/EtherWallet.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.2;
+				minimumVersion = 1.1.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -372,9 +372,9 @@
 			package = 04E8DAEE2F45C2E100B28E40 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		04E8DCB32F46F36300B28E40 /* EtherWallet */ = {
+		04E8DD2C2F46FE9A00B28E40 /* EtherWallet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 04E8DCB22F46F36300B28E40 /* XCRemoteSwiftPackageReference "EtherWallet" */;
+			package = 04E8DD2B2F46FE9A00B28E40 /* XCRemoteSwiftPackageReference "EtherWallet" */;
 			productName = EtherWallet;
 		};
 /* End XCSwiftPackageProductDependency section */
