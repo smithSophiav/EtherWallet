@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Import from mnemonic (importAccountFromMnemonic).
 final class ImportMnemonicViewController: UIViewController {
 

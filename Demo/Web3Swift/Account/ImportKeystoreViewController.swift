@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Import from Keystore (importAccountFromKeystore).
 final class ImportKeystoreViewController: UIViewController {
 

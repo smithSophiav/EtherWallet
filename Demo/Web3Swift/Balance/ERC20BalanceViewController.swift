@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Query ERC20 token balance (getERC20TokenBalance). Uses current network from NetworkManager.
 final class ERC20BalanceViewController: UIViewController {
 

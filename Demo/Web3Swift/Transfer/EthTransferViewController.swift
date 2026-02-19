@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// ETH transfer (estimateEthTransferGas + ethTransfer). Uses NetworkManager for rpcUrl + chainId.
 final class EthTransferViewController: UIViewController {
 

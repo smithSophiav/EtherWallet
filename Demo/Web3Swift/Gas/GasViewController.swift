@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Current network gas (getGasPrice / getSuggestedFees). Uses NetworkManager for rpcUrl + chainId.
 final class GasViewController: UIViewController {
 

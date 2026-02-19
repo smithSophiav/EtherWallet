@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Generate new wallet
 final class GenerateAccountViewController: UIViewController {
 

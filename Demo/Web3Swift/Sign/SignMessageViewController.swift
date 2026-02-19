@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Sign message (EIP-191 personal_sign via signMessage).
 final class SignMessageViewController: UIViewController {
 

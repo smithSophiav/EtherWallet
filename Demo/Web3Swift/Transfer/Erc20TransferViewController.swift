@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// ERC20 transfer (estimateErc20TransferGas + erc20Transfer). Uses NetworkManager for rpcUrl + chainId.
 final class Erc20TransferViewController: UIViewController {
 

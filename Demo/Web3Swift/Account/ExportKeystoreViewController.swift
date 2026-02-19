@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Private key to Keystore (generate Keystore from private key + password).
 final class ExportKeystoreViewController: UIViewController {
 

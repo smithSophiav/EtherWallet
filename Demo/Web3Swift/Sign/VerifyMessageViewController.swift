@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Verify message (recover signer from message + signature; optional check against expected address).
 final class VerifyMessageViewController: UIViewController {
 

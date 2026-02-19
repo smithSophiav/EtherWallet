@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Import from private key (importAccountFromPrivateKey).
 final class ImportPrivateKeyViewController: UIViewController {
 

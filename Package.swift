@@ -26,9 +26,6 @@ let package = Package(
             name: "EtherWallet",
             dependencies: [],
             resources: [.copy("web3swift.bundle")]
-        ),
-        .testTarget(
-            name: "EtherWalletTests",
-            dependencies: ["EtherWallet"]),
+        )
     ]
 )

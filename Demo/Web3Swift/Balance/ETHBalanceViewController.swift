@@ -5,7 +5,7 @@
 
 import UIKit
 import SnapKit
-
+import EtherWallet
 /// Query ETH balance (getETHBalance). Uses current network from NetworkManager.
 final class ETHBalanceViewController: UIViewController {
 
